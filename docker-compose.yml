@@ -1,0 +1,16 @@
+version: '3'
+services:
+  jupyter:
+    build: .
+    container_name: torch_env
+    tty: true
+    ports:
+      - '8080:8888'
+    volumes:
+      - './src:/mnt/workspace'
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu]
